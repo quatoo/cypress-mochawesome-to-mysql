@@ -1,11 +1,13 @@
 {
     "compilerOptions": {
-        "target": "ES5",
-        "lib": ["es5", "dom"],
-        "outDir": "./out",
+        "module": "es2022",
+        "target": "ES2017",
+        "lib": ["ES2017", "dom"],
+        "outDir": "./dist",
 		"baseUrl": "./src",
+        "moduleResolution": "node",
         "esModuleInterop": true,
-        "removeComments": true
+        "removeComments": true,
     },
     "include": ["src"],
     "exclude": ["node_modules"]
