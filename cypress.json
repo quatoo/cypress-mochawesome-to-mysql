@@ -1,0 +1,12 @@
+{
+    "baseUrl": "https://proacexpresso-homolog.azurewebsites.net",
+    "viewportWidth": 1440,
+    "viewportHeight": 900,
+    "reporter": "mochawesome",
+    "reporterOptions": {
+      "reportDir": "mochawesome-report",
+      "overwrite": true,
+      "html": false,
+      "json": true
+    }
+}

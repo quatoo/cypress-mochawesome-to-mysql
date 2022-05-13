@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "lib": ["es5", "dom"],
+        "outDir": "./out",
+		"baseUrl": "./src",
+        "esModuleInterop": true,
+        "removeComments": true
+    },
+    "include": ["src"],
+    "exclude": ["node_modules"]
+}
