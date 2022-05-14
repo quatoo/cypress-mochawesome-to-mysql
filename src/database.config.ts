@@ -42,6 +42,7 @@ const createRESULTSCommand = `
         uuid VARCHAR(36) NOT NULL,
         parentUUID VARCHAR(36) NOT NULL,
         parentTitle VARCHAR(255),
+        file VARCHAR(255),
         title VARCHAR(255),
         fullTitle VARCHAR(255),
         timedOut VARCHAR(255),
