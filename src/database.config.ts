@@ -4,8 +4,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { createConnection } from 'mysql2';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __root = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__root);
 dotenv.config({ path: path.resolve(__dirname, '..', '.env') });
 
 const con = createConnection({
@@ -45,7 +45,7 @@ const createRESULTSCommand = `
         file VARCHAR(255),
         title VARCHAR(255),
         fullTitle VARCHAR(255),
-        timedOut VARCHAR(255),
+        timeOut VARCHAR(255),
         duration int,
         state VARCHAR(100),
         speed VARCHAR(100),

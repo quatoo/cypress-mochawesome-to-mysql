@@ -1,4 +1,4 @@
-describe('GET POSTS', () =>{    
+describe('GET POSTS', () => {    
     it('Get all posts', () => {
         cy.request('https://gorest.co.in/public/v2/posts').as('posts');
         cy.get('@posts').its('status').should('equal', 200);

@@ -1,5 +1,6 @@
 node_modules/
 mochawesome-report/
+cypress/screenshots/
 dist/
 
 .vscode/

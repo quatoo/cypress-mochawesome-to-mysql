@@ -1,7 +1,7 @@
 
-describe('GET TODO list', () =>{    
+describe('GET TODO list', () => {    
     it('Get values', () => {
-        cy.request('https://gorest.co.in/public/v2/todo').as('todo-list');
+        cy.request('https://gorest.co.in/public/v2/todos').as('todo-list');
         cy.get('@todo-list').its('status').should('equal', 200);
     });
 

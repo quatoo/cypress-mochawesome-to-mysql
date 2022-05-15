@@ -1,11 +1,12 @@
 {
-    "baseUrl": "https://proacexpresso-homolog.azurewebsites.net",
+    "baseUrl": "https://gorest.co.in",
     "viewportWidth": 1440,
     "viewportHeight": 900,
+    "video": false,
     "reporter": "mochawesome",
     "reporterOptions": {
       "reportDir": "mochawesome-report",
-      "overwrite": true,
+      "overwrite": false,
       "html": false,
       "json": true
     }
