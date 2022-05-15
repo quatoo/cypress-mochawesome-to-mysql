@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
 import { createConnection } from 'mysql2/promise';
 
 import { convertToMySQLDateTime } from './utils.js';
-import { IMochawesomeResult } from 'mochawesomeResult.model.js';
+import { IMochawesomeResult } from './mochawesomeResult.model.js';
 
 
 const __root = fileURLToPath(import.meta.url);
@@ -33,7 +33,6 @@ const conn = await createConnection({
 try {
 
     const sqlCommand = insertRunSQLCommand({ reportStats: reportContent.stats});
-    // ler a documentacao desse "conn.execute"
     await conn.execute(sqlCommand);
 
 } catch (error) {

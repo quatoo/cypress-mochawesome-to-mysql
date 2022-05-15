@@ -3,6 +3,7 @@
     "viewportWidth": 1440,
     "viewportHeight": 900,
     "video": false,
+    "screenshots": false,
     "reporter": "mochawesome",
     "reporterOptions": {
       "reportDir": "mochawesome-report",
