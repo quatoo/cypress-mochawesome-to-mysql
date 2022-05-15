@@ -6,14 +6,17 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "report:setup": "mkdir report",
+    "report:clean": "rmdir mochawesome-report /s /q && rmdir report /s /q",
     "db:create": "node ./dist/database.config",
     "db:extract": "node ./dist/extract.report",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "cy:merge": "mochawesome-merge ./mochawesome-report/*.json > ./report/output.json",
-    "test": "run-s cy:run cy:merge",
     "setup": "run-s build db:create",
-    "extract": "run-s build db:extract"
+    "test": "run-s cy:run",
+    "report": "run-s report:setup cy:merge",
+    "extract": "run-s build db:extract report:clean"
   },
   "repository": {
     "type": "git",

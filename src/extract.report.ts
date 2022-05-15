@@ -5,7 +5,7 @@ import path from 'path';
 import { Output, OutputStats } from 'mochawesome';
 
 import { fileURLToPath } from 'url';
-import { createConnection } from 'mysql2';
+import { createConnection } from 'mysql2/promise';
 
 import { convertToMySQLDateTime } from './utils.js';
 import { IMochawesomeResult } from 'mochawesomeResult.model.js';
@@ -22,7 +22,7 @@ if (!existsSync(pathToReport)) throw 'mochawesome report doesn\'t exists';
 const reportFile = readFileSync(pathToReport, { encoding: 'ascii' });
 const reportContent: Output = JSON.parse(reportFile);
 
-const con = createConnection({
+const conn = await createConnection({
     host: process.env.DB_HOSTNAME,
     user: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
@@ -31,13 +31,11 @@ const con = createConnection({
 
 // RUN - RESUME
 try {
-    await new Promise((resolve, reject) => {
-        const sqlCommand = insertRunSQLCommand({ reportStats: reportContent.stats});
-        con.query((sqlCommand), (err, res) => {
-            if (err) reject(err);
-            resolve(res);
-        });
-    });
+
+    const sqlCommand = insertRunSQLCommand({ reportStats: reportContent.stats});
+    // ler a documentacao desse "conn.execute"
+    await conn.execute(sqlCommand);
+
 } catch (error) {
     throw error;
 } finally {
@@ -46,32 +44,26 @@ try {
 
 // RESULTS
 try {
-    await new Promise((resolve, reject) => {
 
-        for (const result of reportContent.results) {
-            const parentFile = result.file;
+    for (const result of reportContent.results) {
+        const parentFile = result.file;
 
-            for (const suite of result.suites) {
-                const parentTitle = suite.title;
+        for (const suite of result.suites) {
+            const parentTitle = suite.title;
 
-                for (const test of suite.tests) {
-                    const resultItem: IMochawesomeResult = {
-                        ...test,
-                        parentTitle,
-                        file: parentFile,
-                    };
+            for (const test of suite.tests) {
+                const resultItem: IMochawesomeResult = {
+                    ...test,
+                    parentTitle,
+                    file: parentFile,
+                };
 
-                    const sqlCommand = insertResultSQLCommand({ reportResult: resultItem});
-                    con.query((sqlCommand), (err, res) => {
-                        if (err) reject(err);
-                    });
-                }
+                const sqlCommand = insertResultSQLCommand({ reportResult: resultItem});
+                await conn.execute(sqlCommand);
             }
         }
+    }
 
-        resolve('ended');
-
-    });
 } catch (error) {
     throw error;
 } finally {

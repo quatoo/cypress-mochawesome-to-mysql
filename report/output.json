@@ -1,0 +1,360 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 8,
+    "passes": 7,
+    "pending": 0,
+    "failures": 1,
+    "start": "2022-05-15T12:44:21.458Z",
+    "end": "2022-05-15T12:44:28.642Z",
+    "duration": 4582,
+    "testsRegistered": 8,
+    "passPercent": 87.5,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "9ac95f51-ad59-43ac-8903-d7cf2c341b0f",
+      "title": "",
+      "fullFile": "cypress/integration/posts.spec.ts",
+      "file": "cypress/integration/posts.spec.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "88060532-2bfa-4a52-8bee-15319cd00957",
+          "title": "GET POSTS",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Get all posts",
+              "fullTitle": "GET POSTS Get all posts",
+              "timedOut": null,
+              "duration": 391,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('https://gorest.co.in/public/v2/posts').as('posts');\ncy.get('@posts').its('status').should('equal', 200);",
+              "err": {},
+              "uuid": "dcbbbb4a-f5a6-4909-95d4-cf278c710627",
+              "parentUUID": "88060532-2bfa-4a52-8bee-15319cd00957",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get posts created by user",
+              "fullTitle": "GET POSTS Get posts created by user",
+              "timedOut": null,
+              "duration": 373,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('https://gorest.co.in/public/v2/users/100/posts').as('posts');\ncy.get('@posts').its('status').should('equal', 200);",
+              "err": {},
+              "uuid": "7f76e7a0-14e9-447b-b03b-4b0a24118419",
+              "parentUUID": "88060532-2bfa-4a52-8bee-15319cd00957",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "dcbbbb4a-f5a6-4909-95d4-cf278c710627",
+            "7f76e7a0-14e9-447b-b03b-4b0a24118419"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 764,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "dcff53b5-3957-4a6a-acbc-1efeb0c1c4ef",
+      "title": "",
+      "fullFile": "cypress/integration/todos.spec.ts",
+      "file": "cypress/integration/todos.spec.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "42faca3d-1d99-487d-8851-47161204c20a",
+          "title": "GET TODO list",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Get values",
+              "fullTitle": "GET TODO list Get values",
+              "timedOut": null,
+              "duration": 399,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('https://gorest.co.in/public/v2/todos').as('todo-list');\ncy.get('@todo-list').its('status').should('equal', 200);",
+              "err": {},
+              "uuid": "cda66f25-1301-4cba-9314-58333f26dfe9",
+              "parentUUID": "42faca3d-1d99-487d-8851-47161204c20a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should fail",
+              "fullTitle": "GET TODO list should fail",
+              "timedOut": null,
+              "duration": 478,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('https://gorest.co.in/public/v2/error').as('error');\ncy.get('@todo-list').its('status').should('equal', 200);",
+              "err": {
+                "message": "CypressError: `cy.request()` failed on:\n\nhttps://gorest.co.in/public/v2/error\n\nThe response we received from your web server was:\n\n  > 404: Not Found\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: https://gorest.co.in/public/v2/error\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.6.1 Chrome/94.0.4606.81 Electron/15.5.1 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\"\n}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 404 - Not Found\nHeaders: {\n  \"server\": \"nginx\",\n  \"date\": \"Sun, 15 May 2022 12:44:28 GMT\",\n  \"content-type\": \"text/html; charset=utf-8\",\n  \"transfer-encoding\": \"chunked\",\n  \"connection\": \"keep-alive\",\n  \"vary\": \"Accept-Encoding, Origin\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"x-xss-protection\": \"0\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-download-options\": \"noopen\",\n  \"x-permitted-cross-domain-policies\": \"none\",\n  \"referrer-policy\": \"strict-origin-when-cross-origin\",\n  \"link\": \"</assets/application-2715366c2372d5dfabfa9c9d05a0e84b9c0de17fe12c2d96e07d2db0e218fed2.css>; rel=preload; as=style; nopush\",\n  \"cache-control\": \"no-cache\",\n  \"feature-policy\": \"camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'\",\n  \"set-cookie\": [\n    \"_gorest_session=MOHBJiNJtkKLOxerxMfMItG%2BzFh2%2FHCq4dju%2BNQpNyXJGQ4dcxSTUFUeuZa2cG4DvOPWyVFQDJeoytlsAB%2FVFpa3VcHIJtgbAkeNaqZt%2FoDwqgYmsRPOjLJJ57fpYugkMJ8vWSZBD8RlQMpf8rpcXBoVToTKfYXURtiIToJapzToz%2FazC%2BqnIU5PGYOEZvS14rVbW4fnudhvBjh%2FIBwrfXNlnjp9MaSKh43fVuQMWd0F90VEhL1XFF%2FO5u986gg9XrnrOI3Sc9lizuXOiGwSzNGg7Hi2TSw%3D--kAe7eFEVsd%2FDQr%2BG--5iqjOlZkG5QVLMLKWmzYZA%3D%3D; path=/; secure; HttpOnly; SameSite=Lax\"\n  ],\n  \"x-request-id\": \"da283aa3-9951-4542-9d4c-71962f0ddc25\",\n  \"x-runtime\": \"0.007186\",\n  \"strict-transport-security\": \"max-age=63072000; includeSubDomains\",\n  \"content-encoding\": \"gzip\"\n}\nBody: <!DOCTYPE html><html><head><meta charset=\"utf-8\" /><meta content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" name=\"viewport\" /><link href=\"/favicon.ico\" rel=\"icon\" type=\"image/x-icon\" /><title>Page Not Found | GO REST</title><meta name=\"csrf-param\" content=\"authenticity_token\" />\n<meta name=\"csrf-token\" content=\"TP3CKbvLZYHp0aCTj1hXKmq8FmiHoySfTPojDK39t3hRp_NwhELZlg_9LLaJVTzrQAJPsfICVoG9zR-z5lOTsg\" /><link rel=\"stylesheet\" href=\"/assets/application-2715366c2372d5dfabfa9c9d05a0e84b9c0de17fe12c2d96e07d2db0e218fed2.css\" media=\"all\" data-turbolinks-track=\"reload\" /><script src=\"/packs/js/application-84cecc93f869802defaa.js\" data-turbolinks-track=\"reload\" defer=\"defer\"></script><script async=\"true\" crossorigin=\"anonymous\" src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4930099895671899\"></script><script async=\"true\" src=\"https://www.googletagmanager.com/gtag/js?id=G-7KR6VNWHWS\"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-7KR6VNWHWS');</script></head><body><nav class=\"navbar navbar-expand-lg navbar-dark bg-dark sticky-top\"><div class=\"container\"><a class=\"navbar-brand\" href=\"/\"><i class=\"fas fa-exchange-alt\"></i> Go REST</a><button aria-controls=\"AppNavBar\" aria-expanded=\"false\" aria-label=\"Toggle navigation\" class=\"navbar-toggler\" data-bs-target=\"#AppNavBar\" data-bs-toggle=\"collapse\" type=\"button\"><span class=\"navbar-toggler-icon\"></span></button><div class=\"collapse navbar-collapse\" id=\"AppNavBar\"><ul class=\"navbar-nav ms-auto\"><li class=\"nav-item\"><a class=\"nav-link\" href=\"/chandamama-stories\"><i class=\"fas fa-cloud-moon\"></i> Chandamama Stories</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"/qa\"><i class=\"fas fa-life-ring\"></i> Help</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"/rest-console\"><i class=\"fab fa-linux\"></i> Rest Console</a></li><li class=\"nav-item dropdown\"><a aria-expanded=\"false\" class=\"nav...\n\n\nhttps://on.cypress.io/request",
+                "estack": "CypressError: `cy.request()` failed on:\n\nhttps://gorest.co.in/public/v2/error\n\nThe response we received from your web server was:\n\n  > 404: Not Found\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: https://gorest.co.in/public/v2/error\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.6.1 Chrome/94.0.4606.81 Electron/15.5.1 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\"\n}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 404 - Not Found\nHeaders: {\n  \"server\": \"nginx\",\n  \"date\": \"Sun, 15 May 2022 12:44:28 GMT\",\n  \"content-type\": \"text/html; charset=utf-8\",\n  \"transfer-encoding\": \"chunked\",\n  \"connection\": \"keep-alive\",\n  \"vary\": \"Accept-Encoding, Origin\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"x-xss-protection\": \"0\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-download-options\": \"noopen\",\n  \"x-permitted-cross-domain-policies\": \"none\",\n  \"referrer-policy\": \"strict-origin-when-cross-origin\",\n  \"link\": \"</assets/application-2715366c2372d5dfabfa9c9d05a0e84b9c0de17fe12c2d96e07d2db0e218fed2.css>; rel=preload; as=style; nopush\",\n  \"cache-control\": \"no-cache\",\n  \"feature-policy\": \"camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'\",\n  \"set-cookie\": [\n    \"_gorest_session=MOHBJiNJtkKLOxerxMfMItG%2BzFh2%2FHCq4dju%2BNQpNyXJGQ4dcxSTUFUeuZa2cG4DvOPWyVFQDJeoytlsAB%2FVFpa3VcHIJtgbAkeNaqZt%2FoDwqgYmsRPOjLJJ57fpYugkMJ8vWSZBD8RlQMpf8rpcXBoVToTKfYXURtiIToJapzToz%2FazC%2BqnIU5PGYOEZvS14rVbW4fnudhvBjh%2FIBwrfXNlnjp9MaSKh43fVuQMWd0F90VEhL1XFF%2FO5u986gg9XrnrOI3Sc9lizuXOiGwSzNGg7Hi2TSw%3D--kAe7eFEVsd%2FDQr%2BG--5iqjOlZkG5QVLMLKWmzYZA%3D%3D; path=/; secure; HttpOnly; SameSite=Lax\"\n  ],\n  \"x-request-id\": \"da283aa3-9951-4542-9d4c-71962f0ddc25\",\n  \"x-runtime\": \"0.007186\",\n  \"strict-transport-security\": \"max-age=63072000; includeSubDomains\",\n  \"content-encoding\": \"gzip\"\n}\nBody: <!DOCTYPE html><html><head><meta charset=\"utf-8\" /><meta content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" name=\"viewport\" /><link href=\"/favicon.ico\" rel=\"icon\" type=\"image/x-icon\" /><title>Page Not Found | GO REST</title><meta name=\"csrf-param\" content=\"authenticity_token\" />\n<meta name=\"csrf-token\" content=\"TP3CKbvLZYHp0aCTj1hXKmq8FmiHoySfTPojDK39t3hRp_NwhELZlg_9LLaJVTzrQAJPsfICVoG9zR-z5lOTsg\" /><link rel=\"stylesheet\" href=\"/assets/application-2715366c2372d5dfabfa9c9d05a0e84b9c0de17fe12c2d96e07d2db0e218fed2.css\" media=\"all\" data-turbolinks-track=\"reload\" /><script src=\"/packs/js/application-84cecc93f869802defaa.js\" data-turbolinks-track=\"reload\" defer=\"defer\"></script><script async=\"true\" crossorigin=\"anonymous\" src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4930099895671899\"></script><script async=\"true\" src=\"https://www.googletagmanager.com/gtag/js?id=G-7KR6VNWHWS\"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-7KR6VNWHWS');</script></head><body><nav class=\"navbar navbar-expand-lg navbar-dark bg-dark sticky-top\"><div class=\"container\"><a class=\"navbar-brand\" href=\"/\"><i class=\"fas fa-exchange-alt\"></i> Go REST</a><button aria-controls=\"AppNavBar\" aria-expanded=\"false\" aria-label=\"Toggle navigation\" class=\"navbar-toggler\" data-bs-target=\"#AppNavBar\" data-bs-toggle=\"collapse\" type=\"button\"><span class=\"navbar-toggler-icon\"></span></button><div class=\"collapse navbar-collapse\" id=\"AppNavBar\"><ul class=\"navbar-nav ms-auto\"><li class=\"nav-item\"><a class=\"nav-link\" href=\"/chandamama-stories\"><i class=\"fas fa-cloud-moon\"></i> Chandamama Stories</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"/qa\"><i class=\"fas fa-life-ring\"></i> Help</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"/rest-console\"><i class=\"fab fa-linux\"></i> Rest Console</a></li><li class=\"nav-item dropdown\"><a aria-expanded=\"false\" class=\"nav...\n\n\nhttps://on.cypress.io/request\n    at https://gorest.co.in/__cypress/runner/cypress_runner.js:165424:80\n    at tryCatcher (https://gorest.co.in/__cypress/runner/cypress_runner.js:13022:23)\n    at Promise._settlePromiseFromHandler (https://gorest.co.in/__cypress/runner/cypress_runner.js:10957:31)\n    at Promise._settlePromise (https://gorest.co.in/__cypress/runner/cypress_runner.js:11014:18)\n    at Promise._settlePromise0 (https://gorest.co.in/__cypress/runner/cypress_runner.js:11059:10)\n    at Promise._settlePromises (https://gorest.co.in/__cypress/runner/cypress_runner.js:11139:18)\n    at _drainQueueStep (https://gorest.co.in/__cypress/runner/cypress_runner.js:7729:12)\n    at _drainQueue (https://gorest.co.in/__cypress/runner/cypress_runner.js:7722:9)\n    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://gorest.co.in/__cypress/runner/cypress_runner.js:7738:5)\n    at Async.drainQueues (https://gorest.co.in/__cypress/runner/cypress_runner.js:7608:14)\nFrom Your Spec Code:\n    at Context.eval (https://gorest.co.in/__cypress/tests?p=cypress\\integration\\todos.spec.ts:102:12)",
+                "diff": null
+              },
+              "uuid": "8cd8a7e9-ea97-481d-ada4-94b02024962e",
+              "parentUUID": "42faca3d-1d99-487d-8851-47161204c20a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "cda66f25-1301-4cba-9314-58333f26dfe9"
+          ],
+          "failures": [
+            "8cd8a7e9-ea97-481d-ada4-94b02024962e"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 877,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "8f3a497a-beeb-4490-a67e-b495f2c5091a",
+      "title": "",
+      "fullFile": "cypress/integration/users.spec.ts",
+      "file": "cypress/integration/users.spec.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3d41cc32-4de2-4a72-82fa-9b2d0a7a9096",
+          "title": "GET USERS data",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Get users",
+              "fullTitle": "GET USERS data Get users",
+              "timedOut": null,
+              "duration": 389,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('https://gorest.co.in/public/v2/users')\n    .then(function (response) {\n    expect(response).property('status').to.equal(200);\n    var body = (response.body);\n    window.userId = body[0][\"id\"];\n});",
+              "err": {},
+              "uuid": "835f2413-84ab-4276-9963-c0d85eb0d62c",
+              "parentUUID": "3d41cc32-4de2-4a72-82fa-9b2d0a7a9096",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get user data",
+              "fullTitle": "GET USERS data Get user data",
+              "timedOut": null,
+              "duration": 368,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request(\"https://gorest.co.in/public/v2/users/\".concat(window.userId)).as('user');\ncy.get('@user').its('status').should('equal', 200);",
+              "err": {},
+              "uuid": "fb29013e-15e8-4c4a-9b5c-2fa433d01a82",
+              "parentUUID": "3d41cc32-4de2-4a72-82fa-9b2d0a7a9096",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "835f2413-84ab-4276-9963-c0d85eb0d62c",
+            "fb29013e-15e8-4c4a-9b5c-2fa433d01a82"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 757,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "2ee87515-3d55-4291-8409-ab7521afdcd1",
+      "title": "",
+      "fullFile": "cypress/integration/comments.spec.ts",
+      "file": "cypress/integration/comments.spec.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "cfd37329-5483-4892-b40d-c73230d15b93",
+          "title": "GET COMMENTS",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Get all comments",
+              "fullTitle": "GET COMMENTS Get all comments",
+              "timedOut": null,
+              "duration": 1804,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('https://gorest.co.in/public/v2/comments').as('comments');\ncy.get('@comments').its('status').should('equal', 200);",
+              "err": {},
+              "uuid": "d6ffe6fd-8022-4d6c-9a0c-95a3d2e57da8",
+              "parentUUID": "cfd37329-5483-4892-b40d-c73230d15b93",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get comments in a post",
+              "fullTitle": "GET COMMENTS Get comments in a post",
+              "timedOut": null,
+              "duration": 380,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('https://gorest.co.in/public/v2/posts/100/comments').as('comments');\ncy.get('@comments').its('status').should('equal', 200);",
+              "err": {},
+              "uuid": "3047d690-a596-449e-9e12-2a99e284534b",
+              "parentUUID": "cfd37329-5483-4892-b40d-c73230d15b93",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d6ffe6fd-8022-4d6c-9a0c-95a3d2e57da8",
+            "3047d690-a596-449e-9e12-2a99e284534b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2184,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "mochawesome-report",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

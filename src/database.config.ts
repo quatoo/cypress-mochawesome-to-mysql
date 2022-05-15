@@ -2,13 +2,13 @@ import dotenv from 'dotenv';
 import path from 'path';
 
 import { fileURLToPath } from 'url';
-import { createConnection } from 'mysql2';
+import { createConnection } from 'mysql2/promise';
 
 const __root = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__root);
 dotenv.config({ path: path.resolve(__dirname, '..', '.env') });
 
-const con = createConnection({
+const conn = await createConnection({
     host: process.env.DB_HOSTNAME,
     user: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD
@@ -39,6 +39,7 @@ const createRUNSCommand = `
 const createRESULTSCommand = `
     CREATE TABLE ${process.env.DB_NAME}.results
     (
+        id int NOT NULL AUTO_INCREMENT,
         uuid VARCHAR(36) NOT NULL,
         parentUUID VARCHAR(36) NOT NULL,
         parentTitle VARCHAR(255),
@@ -56,17 +57,13 @@ const createRESULTSCommand = `
         err LONGTEXT,
         isHook boolean,
         skipped boolean,
+        dt DATETIME DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (uuid)
     );
 `;
 
 try {
-    await new Promise((resolve, reject) => {
-        con.query(createDBCommand, (err, res) => {
-            if (err) reject(err);
-            resolve(res);
-        });
-    });
+    await conn.execute(createDBCommand);
 } catch (error) {
     throw error;
 } finally {
@@ -74,12 +71,7 @@ try {
 }
 
 try {
-    await new Promise((resolve, reject) => {
-        con.query(createRUNSCommand, (err, res) => {
-            if (err) reject(err);
-            resolve(res);
-        });
-    });
+    await conn.execute(createRUNSCommand);
 } catch (error) {
     throw error;
 } finally {
@@ -87,12 +79,7 @@ try {
 }
 
 try {
-    await new Promise((resolve, reject) => {
-        con.query(createRESULTSCommand, (err, res) => {
-            if (err) reject(err);
-            resolve(res);
-        });
-    });
+    await conn.execute(createRESULTSCommand);
 } catch (error) {
     throw error;
 } finally {
