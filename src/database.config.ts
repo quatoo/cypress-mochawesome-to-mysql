@@ -58,7 +58,7 @@ const createRESULTSCommand = `
         isHook boolean,
         skipped boolean,
         dt DATETIME DEFAULT CURRENT_TIMESTAMP,
-        PRIMARY KEY (uuid)
+        PRIMARY KEY (id)
     );
 `;
 
